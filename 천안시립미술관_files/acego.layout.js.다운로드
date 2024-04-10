@@ -1,0 +1,127 @@
+$(".language-link").each(function() {
+	var $selWrap = $(this),
+		$curBtn = $selWrap.find(">button");
+
+	$curBtn.on("click", function(e) {
+		var $thisBtn = $(this),
+			$selList = $thisBtn.siblings("div");
+
+		if ($selWrap.hasClass("on")) {
+			$selWrap.removeClass("on");
+			$(this).find('em i').text('닫힘버튼');
+
+		} else {
+			$selWrap.addClass("on");
+			$(this).find('em i').text('열림버튼');
+		}
+
+		$('body').on("click", function(e){
+			if( !$selWrap.has(e.target).length ){
+				$selWrap.removeClass('on');
+				$(this).find('em i').text('닫힘버튼');
+			}
+		});
+
+		$selWrap.find("a, button").filter(":first").on("keydown", function(e) {
+			if (e.shiftKey && e.keyCode === 9) {
+				$selWrap.removeClass('on');
+				$(this).find('em i').text('닫힘버튼');
+			}
+		});
+		$selWrap.find("a, button").filter(":last").on("keydown", function(e) {
+			if (!e.shiftKey && e.keyCode ===  9) {
+				$selWrap.removeClass('on');
+				$(this).find('em i').text('닫힘버튼');
+			}
+		});
+
+		e.preventDefault();
+	});
+});
+$(".sel_box, .msel_box").each(function() {
+	var $selWrap = $(this),
+		$curBtn = $selWrap.find(".title");
+	
+
+	$curBtn.on("click", function(e) {
+		var $thisBtn = $(this),
+			$selList = $thisBtn.siblings(".list");
+			
+		if ($selWrap.hasClass("on")) {
+			$selWrap.removeClass("on").find(">a").attr('title','Family Site 닫힘');
+		
+		} else {
+			$selWrap.addClass("on").find(">a").attr('title','Family Site 열림');
+		}
+
+		$('body').on("click", function(e){
+			if( !$selWrap.has(e.target).length ){
+				//마우스가 여백 클릭 시 
+				$selWrap.removeClass("on").find(">a").attr('title','Family Site 닫힘');
+			}
+		});
+
+		$selWrap.find("a, button").filter(":first").on("keydown", function(e) {
+			if (e.shiftKey && e.keyCode === 9) {
+				$selWrap.removeClass("on").find(">a").attr('title','Family Site 닫힘');
+			}
+		});
+		$selWrap.find("a, button").filter(":last").on("keydown", function(e) {
+			if (!e.shiftKey && e.keyCode ===  9) {
+				//탭키 운용 시
+				$selWrap.removeClass("on").find(">a").attr('title','Family Site 닫힘');
+			}
+			
+		});
+
+		e.preventDefault();
+	});
+});
+if ($('.topgo_link').length){
+	var $topBtn = $('.topgo_link');
+	$topBtn.hide();
+	$(window).scroll(function(e){
+		var $topBtnSp = $(this).scrollTop();
+		if($topBtnSp >= 100){
+			$topBtn.fadeIn();
+		}
+		else {
+			$topBtn.fadeOut();
+		}
+	});
+	$('.topgo_link').on('click', function(){
+		$('body,html').animate({scrollTop:0},350);
+	});
+}
+
+
+// gnb search
+
+$(document).ready(function(){
+
+	var search_wrap = $("#gnb_search");
+	var search_open = search_wrap.find(".clickOpen");
+	var open_btn = search_wrap.find(".open");
+	var close_btn = search_wrap.find(".close");
+	
+	
+	search_open.hide();
+
+	open_btn.click(function(){
+		$(this).parent(search_wrap).addClass("active").attr("title","통합검색 열림");
+		// $("#gnb_layout .gnb_wrap").css("padding-right","199px");
+		search_open.show();
+		$("html").addClass("scroll-none");
+		$("#search_input_m").trigger("focus");
+		
+	})
+
+	close_btn.click(function(){
+		$(this).parents(search_wrap).removeClass("active").attr("title","통합검색 닫힘");
+		// $("#gnb_layout .gnb_wrap").css("padding-right","36px");
+		search_open.hide();
+		$("html").removeClass("scroll-none");
+		open_btn.focus()
+	});
+
+});

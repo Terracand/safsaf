@@ -1,0 +1,249 @@
+function visual(){
+                
+    var minSlide = 1;
+    var $mVisual = $(".visual_wrap"),
+      $mVisual_slide = $mVisual.find(".slide"),
+      $mVisual_slide_stop = $mVisual.find(".slide_control .stop"),
+      $mVisual_slide_play = $mVisual.find(".slide_control .play"),
+      $mVisual_slide_next = $mVisual.find(".slide_control .next"),
+      $mVisual_slide_prev = $mVisual.find(".slide_control .prev");
+  
+    $mVisual_slide.on('init', function(e, slick) {
+      if (slick.$slides.length <= minSlide) {
+        $mVisual_slide.siblings(".slide_control").hide();
+      }
+      $mVisual.find('.total').html('<span class="current">' + parseInt(slick.currentSlide + 1) + '</span> <span class="line">/</span><span class="count">' + slick.slideCount + '</span>');
+    });
+  
+    $mVisual_slide.on("afterChange", function(event, _$$slick, currentSlide) {
+      $mVisual.find('.total').html('<span class="current">' + parseInt(_$$slick.currentSlide + 1) + '</span> <span class="line">/</span><span class="count">' + _$$slick.slideCount + '</span>');
+  
+    });
+    $mVisual_slide.slick({
+      slidesToShow: 1,
+    slidesToScroll: 1,
+      dots: false, // 슬라이드 dot 네비게이션
+      autoplay: true,
+      fade: true, // 슬라이드 모션 fade
+      appendDots: $mVisual.find('.html'),
+      nextArrow: $mVisual_slide_next,
+      prevArrow: $mVisual_slide_prev,
+  
+    });
+  
+    $mVisual_slide_stop.click(function() {
+      $(this).hide();
+      $mVisual_slide_play.show();
+      $mVisual_slide.slick("slickPause")
+    });
+    $mVisual_slide_play.click(function() {
+      $(this).hide();
+      $mVisual_slide_stop.show();
+      $mVisual_slide.slick("slickPlay")
+  
+    });
+  
+  }
+    
+
+function sc1_slide(){
+            
+var minSlide = 1;
+var $sc1 = $("#ex-slide"),
+    $sc1_slide = $sc1.find(".slide"),
+    $sc1_slide_stop = $sc1.find(".slide_control .stop"),
+    $sc1_slide_play = $sc1.find(".slide_control .play"),
+    $sc1_slide_next = $sc1.find(".slide_control .next"),
+    $sc1_slide_prev = $sc1.find(".slide_control .prev");
+
+$sc1_slide.on('init', function(e, slick) {
+    if (slick.$slides.length <= minSlide) {
+    $sc1_slide.siblings(".slide_control").hide();
+    }
+    $sc1.find('.total').html('<span class="current">' + parseInt(slick.currentSlide + 1) + '</span> <span class="line">/</span><span class="count">' + slick.slideCount + '</span>');
+});
+
+$sc1_slide.on("afterChange", function(event, _$$slick, currentSlide) {
+    $sc1.find('.total').html('<span class="current">' + parseInt(_$$slick.currentSlide + 1) + '</span> <span class="line">/</span><span class="count">' + _$$slick.slideCount + '</span>');
+
+});
+$sc1_slide.slick({
+    slidesToShow: 1,
+slidesToScroll: 1,
+    dots: false, // 슬라이드 dot 네비게이션
+    autoplay: true,
+    fade: true, // 슬라이드 모션 fade
+    appendDots: $sc1.find('.dot'),
+    nextArrow: $sc1_slide_next,
+    prevArrow: $sc1_slide_prev,
+
+});
+
+$sc1_slide_stop.click(function() {
+    $(this).hide();
+    $sc1_slide_play.show();
+    $sc1_slide.slick("slickPause")
+});
+$sc1_slide_play.click(function() {
+    $(this).hide();
+    $sc1_slide_stop.show();
+    $sc1_slide.slick("slickPlay")
+
+});
+
+}
+
+
+function sc3_slide(){
+            
+    var minSlide = 1;
+    var $sc3 = $("#sc_slide3"),
+        $sc3_slide = $sc3.find(".slide"),
+        $sc3_slide_stop = $sc3.find(".slide_control .stop"),
+        $sc3_slide_play = $sc3.find(".slide_control .play"),
+        $sc3_slide_next = $sc3.find(".slide_control .next"),
+        $sc3_slide_prev = $sc3.find(".slide_control .prev");
+    
+    $sc3_slide.on('init', function(e, slick) {
+        if (slick.$slides.length <= minSlide) {
+        $sc3_slide.siblings(".slide_control").hide();
+        }
+        $sc3.find('.total').html('<span class="current">' + parseInt(slick.currentSlide + 1) + '</span> <span class="line">/</span><span class="count">' + slick.slideCount + '</span>');
+    });
+    
+    $sc3_slide.on("afterChange", function(event, _$$slick, currentSlide) {
+        $sc3.find('.total').html('<span class="current">' + parseInt(_$$slick.currentSlide + 1) + '</span> <span class="line">/</span><span class="count">' + _$$slick.slideCount + '</span>');
+    
+    });
+    $sc3_slide.slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        dots: false, // 슬라이드 dot 네비게이션
+        autoplay: true,
+        fade: true, // 슬라이드 모션 fade
+        appendDots: $sc3.find('.dot'),
+        nextArrow: $sc3_slide_next,
+        prevArrow: $sc3_slide_prev,
+
+        responsive: [{
+            breakpoint: 1001,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+              fade: false,
+          
+            }
+          },
+          {
+            breakpoint: 541,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              fade: true,
+             
+            }
+          }]
+    
+    });
+    
+    $sc3_slide_stop.click(function() {
+        $(this).hide();
+        $sc3_slide_play.show();
+        $sc3_slide.slick("slickPause")
+    });
+    $sc3_slide_play.click(function() {
+        $(this).hide();
+        $sc3_slide_stop.show();
+        $sc3_slide.slick("slickPlay")
+    
+    });
+    
+    }
+       
+
+
+function sc2_slide(){
+            
+    var minSlide = 1;
+    var $sc2 = $("#sc-slide2"),
+      $sc2_slide = $sc2.find(".slide"),
+      $sc2_slide_stop = $sc2.find(".slide_control .stop"),
+      $sc2_slide_play = $sc2.find(".slide_control .play"),
+      $sc2_slide_next = $sc2.find(".slide_control .next"),
+      $sc2_slide_prev = $sc2.find(".slide_control .prev");
+      $sc2_slide_navi = $("#navi-slide");
+  
+    $sc2_slide.on('init', function(e, slick) {
+      if (slick.$slides.length <= minSlide) {
+        $sc2_slide.siblings(".slide_control").hide();
+      }
+      $sc2.find('.total').html('<span class="current">' + parseInt(slick.currentSlide + 1) + '</span> <span class="line">/</span><span class="count">' + slick.slideCount + '</span>');
+    });
+  
+    $sc2_slide.on("afterChange", function(event, _$$slick, currentSlide) {
+      $sc2.find('.total').html('<span class="current">' + parseInt(_$$slick.currentSlide + 1) + '</span> <span class="line">/</span><span class="count">' + _$$slick.slideCount + '</span>');
+  
+    });
+    $sc2_slide.slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      dots: false, // 슬라이드 dot 네비게이션
+      autoplay: true,
+      fade: true, // 슬라이드 모션 fade
+      variableWidth:false,
+      appendDots: $sc2.find('.dot'),
+      nextArrow: $sc2_slide_next,
+      prevArrow: $sc2_slide_prev,      
+      asNavFor: $sc2_slide_navi,
+      responsive: [{
+        breakpoint: 381,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          fade: true,
+          variableWidth:false,
+        }
+      }]
+    });
+  
+    $sc2_slide_stop.click(function() {
+      $(this).hide();
+      $sc2_slide_play.show();
+      $sc2_slide.slick("slickPause")
+    });
+    $sc2_slide_play.click(function() {
+      $(this).hide();
+      $sc2_slide_stop.show();
+      $sc2_slide.slick("slickPlay")
+  
+    });
+  
+
+    // navi slide 
+      $sc2_slide_navi.slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        variableWidth:true,
+        asNavFor:$sc2_slide,
+        focusOnSelect: true,
+        Arrows:false,
+        fade: false,
+        dots: false,
+        
+        responsive: [{
+          breakpoint: 381,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            fade: true,
+            variableWidth:false,
+          }
+        }]
+      });
+    
+
+
+
+}
+    
+
